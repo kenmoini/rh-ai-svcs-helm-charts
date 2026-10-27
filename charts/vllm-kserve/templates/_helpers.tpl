@@ -58,7 +58,7 @@ openshift.io/display-name: {{ include "vllm-kserve.fullname" .}}
 {{- if .Values.endpoint.auth.enabled }}
 security.opendatahub.io/enable-auth: "true"
 {{- else }}
-security.opendatahub.io/enable-auth: "true"
+security.opendatahub.io/enable-auth: "false"
 {{- end }}
 {{- if eq .Values.servingTopology "multiNode" }}
 serving.kserve.io/autoscalerClass: external
