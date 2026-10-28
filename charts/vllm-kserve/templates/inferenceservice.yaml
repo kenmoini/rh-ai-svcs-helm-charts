@@ -47,10 +47,10 @@ spec:
       modelFormat:
         name: vLLM
       name: ''
-      {{- with .Values.resources }}
-        resources:
-          {{- toYaml .Values.resources | nindent 8 }}
-        {{- end }}
+      {{- if .Values.resources }}
+      resources:
+        {{- toYaml .Values.resources | nindent 8 }}
+      {{- end }}
       {{- if .Values.servingRuntime.useExisting }}
       runtime: {{ .Values.servingRuntime.useExisting }}
       {{- else }}
