@@ -30,9 +30,9 @@ spec:
     nodeSelector:
       {{- toYaml .Values.nodeSelector | nindent 6 }}
     {{- end }}
-    {{- if .Values.affinity }}
+    {{- if .Values.inferenceService.affinity }}
     affinity:
-      {{- toYaml .Values.affinity | nindent 6 }}
+      {{- toYaml .Values.inferenceService.affinity | nindent 6 }}
     {{- end }}
     {{- if .Values.inferenceService.runtimeClassName }}
     runtimeClassName: {{ .Values.inferenceService.runtimeClassName }}
