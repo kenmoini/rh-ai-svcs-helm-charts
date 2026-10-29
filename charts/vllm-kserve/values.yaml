@@ -125,6 +125,14 @@ imagePullSecrets: []
 inferenceService:
   # -- Overwrite the default name for the InferenceService.
   name: ""
+  # -- Extra labels to add to the InferenceService.  These labels will be added to the InferenceService and the underlying resources created by KServe.
+  extraLabels: {}
+  # -- Extra annotations to add to the InferenceService.  These annotations will be added to the InferenceService and the underlying resources created by KServe.
+  extraAnnotations: {}
+  # -- affinity for the InferenceService.  This affinity will be added to the InferenceService and the underlying resources created by KServe.
+  affinity: {}
+  # -- runtimeClassName for the InferenceService.  This runtimeClassName will be added to the InferenceService and the underlying resources created by KServe.
+  runtimeClassName: ""
 
 servingRuntime:
   # -- Overwrite the default name for the ServingRuntime.

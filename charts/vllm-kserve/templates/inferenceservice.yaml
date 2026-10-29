@@ -30,6 +30,21 @@ spec:
     nodeSelector:
       {{- toYaml .Values.nodeSelector | nindent 6 }}
     {{- end }}
+    {{- if .Values.affinity }}
+    affinity:
+      {{- toYaml .Values.affinity | nindent 6 }}
+    {{- end }}
+    {{- if .Values.inferenceService.runtimeClassName }}
+    runtimeClassName: {{ .Values.inferenceService.runtimeClassName }}
+    {{- end }}
+    {{- if .Values.inferenceService.extraLabels }}
+    labels:
+      {{- toYaml .Values.inferenceService.extraLabels | nindent 6 }}
+    {{- end }}
+    {{- if .Values.inferenceService.extraAnnotations }}
+    annotations:
+      {{- toYaml .Values.inferenceService.extraAnnotations | nindent 6 }}
+    {{- end }}
     model:
       args:
         {{- if .Values.model.modelNameOverride }}
