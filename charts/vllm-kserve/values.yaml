@@ -122,42 +122,17 @@ nodeSelector: {}
 # -- This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
 
-# inferenceService:
-#   # -- Overwrite the default name for the InferenceService.
-#   name: ""
-#   # -- Extra labels to add to the InferenceService.  These labels will be added to the InferenceService and the underlying resources created by KServe.
-#   extraLabels: {}
-#   # -- Extra annotations to add to the InferenceService.  These annotations will be added to the InferenceService and the underlying resources created by KServe.
-#   extraAnnotations: {}
-#   # -- affinity for the InferenceService.  This affinity will be added to the InferenceService and the underlying resources created by KServe.
-#   affinity: {}
-#   # -- runtimeClassName for the InferenceService.  This runtimeClassName will be added to the InferenceService and the underlying resources created by KServe.
-#   runtimeClassName: ""
-
 inferenceService:
-  extraLabels:
-    models.kemo.ai/size: small
-  affinity:
-    podAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-                - key: models.kemo.ai/size
-                  operator: In
-                  values:
-                    - "small"
-            topologyKey: kubernetes.io/hostname
-        - weight: 50
-          podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-                - key: models.kemo.ai/size
-                  operator: In
-                  values:
-                    - "xsmall"
-            topologyKey: kubernetes.io/hostname
+  # -- Overwrite the default name for the InferenceService.
+  name: ""
+  # -- Extra labels to add to the InferenceService.  These labels will be added to the InferenceService and the underlying resources created by KServe.
+  extraLabels: {}
+  # -- Extra annotations to add to the InferenceService.  These annotations will be added to the InferenceService and the underlying resources created by KServe.
+  extraAnnotations: {}
+  # -- affinity for the InferenceService.  This affinity will be added to the InferenceService and the underlying resources created by KServe.
+  affinity: {}
+  # -- runtimeClassName for the InferenceService.  This runtimeClassName will be added to the InferenceService and the underlying resources created by KServe.
+  runtimeClassName: ""
 
 servingRuntime:
   # -- Overwrite the default name for the ServingRuntime.
