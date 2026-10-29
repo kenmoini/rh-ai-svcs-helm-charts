@@ -9,7 +9,16 @@ metadata:
     {{- if eq .Values.servingTopology "singleNode" }}
     opendatahub.io/dashboard: "true"
     {{- end }}
+    {{- if .Values.endpoint.externalRoute.enabled }}
+    {{- if eq .Values.deploymentMode "RawDeployment" }}
     networking.kserve.io/visibility: exposed
+    {{- end }}
+    {{- end }}
+    {{- if not .Values.endpoint.externalRoute.enabled }}
+    {{- if eq .Values.deploymentMode "Serverless" }}
+    networking.knative.dev/visibility: cluster-local
+    {{- end }}
+    {{- end }}
 spec:
   predictor:
     minReplicas: {{ .Values.scaling.minReplicas }}
